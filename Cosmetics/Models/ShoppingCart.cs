@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Cosmetics.Models
 {
@@ -9,13 +10,14 @@ namespace Cosmetics.Models
 
         public ShoppingCart()
         {
-            throw new NotImplementedException("Not implemented yet.");
+            this.products = new List<Product>();
         }
 
         public List<Product> Products
         {
             get
             {
+                return new List<Product>(products);
                 // List encapsulation is tricky.
                 throw new NotImplementedException("Not implemented yet.");
             }
@@ -23,22 +25,30 @@ namespace Cosmetics.Models
 
         public void AddProduct(Product product)
         {
-            throw new NotImplementedException("Not implemented yet.");
+            if(product == null)
+            {
+                throw new ArgumentNullException("Product cannot be null");
+            }
+            products.Add(product);
         }
 
         public void RemoveProduct(Product product)
         {
-            throw new NotImplementedException("Not implemented yet.");
+            if(!products.Contains(product))
+            {
+                throw new ArgumentException("Product not found");
+            }
+            products.Remove(product);
         }
 
         public bool ContainsProduct(Product product)
         {
-            throw new NotImplementedException("Not implemented yet.");
+            return products.Contains(product);
         }
 
         public double TotalPrice()
         {
-            throw new NotImplementedException("Not implemented yet.");
+            return products.Select(p=>p.Price).Sum();
         }
     }
 }
