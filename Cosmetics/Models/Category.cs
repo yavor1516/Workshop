@@ -7,14 +7,17 @@ namespace Cosmetics.Models
     {
         public const int NameMinLength = 2;
         public const int NameMaxLength = 15;
-
         string name;
+        private List<Product> products = new List<Product>();
 
         public Category(string name)
         {
-            if (name.Length < 2 || name.Length > 10)
-                throw new ArgumentException("Name must be between 2 and 10");
-            Name = name;
+            if (name.Length < NameMinLength || name.Length > NameMaxLength)
+            {
+                throw new ArgumentException("Name must be between 1 and 10 characters long.");
+            }
+            this.name = name;
+            products = new List<Product>();
         }
 
         public string Name
@@ -33,19 +36,29 @@ namespace Cosmetics.Models
         {
             get
             {
-                // List encapsulation is tricky.
-                throw new NotImplementedException("Not implemented yet.");
+                return products;
+            }
+            set
+            {
+                products = value;
             }
         }
 
         public void AddProduct(Product product)
         {
-            throw new NotImplementedException("Not implemented yet.");
+            products.Add(product);
         }
 
         public void RemoveProduct(Product product)
         {
-            throw new NotImplementedException("Not implemented yet.");
+            if (products.Contains(product))
+            {
+                products.Remove(product);
+            }
+            else
+            {
+                throw new ArgumentException("Product not found");
+            }
         }
 
         public string Print()
