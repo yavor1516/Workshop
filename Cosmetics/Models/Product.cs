@@ -84,9 +84,13 @@ namespace Cosmetics.Models
         {
             // Format:
             // #[Name] [Brand]
+            string str = $"{Name} {Brand}";
+            str += $"Price: {Price}";
+            str += $"Gender: {Gender}";
+            return str;
             // #Price: [Price]
             // #Gender: [Gender]
-            throw new ArgumentException("Not implemented yet.");
+            
         }
 
         public override bool Equals(object p)
