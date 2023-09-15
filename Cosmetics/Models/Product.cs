@@ -51,6 +51,7 @@ namespace Cosmetics.Models
                 {
                     throw new ArgumentException("Name length is not between 3 and 10");
                 }
+                this.name= value;
             }
         }
 
@@ -66,6 +67,7 @@ namespace Cosmetics.Models
                 {
                     throw new ArgumentException("Brand name length is not between 2 and 10");
                 }
+                this.brand = value;
             }
         }
 
