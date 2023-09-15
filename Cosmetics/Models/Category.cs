@@ -8,20 +8,24 @@ namespace Cosmetics.Models
         public const int NameMinLength = 2;
         public const int NameMaxLength = 15;
 
+        string name;
+
         public Category(string name)
         {
-            throw new NotImplementedException("Not implemented yet.");
+            if (name.Length < 2 || name.Length > 10)
+                throw new ArgumentException("Name must be between 2 and 10");
+            Name = name;
         }
 
         public string Name
         {
             get
             {
-                throw new NotImplementedException("Not implemented yet.");
+                return this.name;
             }
             set
             {
-                throw new NotImplementedException("Not implemented yet.");
+                this.name = value;
             }
         }
 
