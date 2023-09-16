@@ -63,7 +63,19 @@ namespace Cosmetics.Models
 
         public string Print()
         {
-            throw new NotImplementedException("Not implemented yet.");
+            
+                if (products.Count<1)
+                
+                    return $"#Category:{this.name}\n#No product in this category";
+
+                else
+                {
+                    foreach (Product product in products)
+                    {
+                        return ($"#Category {this.name}\n#{product.Name}\n#Price: {product.Price}\n#Gender: {product.Gender}");
+                    }
+                }
+            return null;
         }
     }
 }
