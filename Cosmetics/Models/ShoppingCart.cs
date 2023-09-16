@@ -34,7 +34,7 @@ namespace Cosmetics.Models
 
         public void RemoveProduct(Product product)
         {
-            if(!products.Contains(product))
+            if(products.Contains(product))
             {
                 throw new ArgumentException("Product not found");
             }
